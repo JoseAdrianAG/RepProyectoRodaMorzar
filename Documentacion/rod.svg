@@ -1,0 +1,56 @@
+<svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="1000" height="800" fill="#1E1E1E"/>
+    
+    <!-- User -->
+    <rect x="450" y="20" width="100" height="50" fill="#4A90E2" stroke="#FFF" stroke-width="2"/>
+    <text x="480" y="50" fill="#FFF" font-size="16">User</text>
+    
+    <!-- Mobile App -->
+    <rect x="400" y="100" width="200" height="50" fill="#D63384" stroke="#FFF" stroke-width="2"/>
+    <text x="430" y="130" fill="#FFF" font-size="16">Mobile App (Flutter)</text>
+    
+    <!-- Screen Components -->
+    <rect x="200" y="200" width="600" height="200" fill="#333" stroke="#FFF" stroke-width="2"/>
+    <text x="410" y="220" fill="#FFF" font-size="16">Screen Components</text>
+    
+    <!-- Individual Screens -->
+    <rect x="220" y="250" width="120" height="50" fill="#FFD700" stroke="#FFF" stroke-width="2"/>
+    <text x="230" y="280" fill="#000" font-size="14">Loading Screen</text>
+    
+    <rect x="360" y="250" width="120" height="50" fill="#FFD700" stroke="#FFF" stroke-width="2"/>
+    <text x="370" y="280" fill="#000" font-size="14">Register Screen</text>
+    
+    <rect x="500" y="250" width="120" height="50" fill="#FFD700" stroke="#FFF" stroke-width="2"/>
+    <text x="510" y="280" fill="#000" font-size="14">Profile Screen</text>
+    
+    <rect x="640" y="250" width="120" height="50" fill="#FFD700" stroke="#FFF" stroke-width="2"/>
+    <text x="660" y="280" fill="#000" font-size="14">Login Screen</text>
+    
+    <!-- Core Services -->
+    <rect x="100" y="450" width="300" height="150" fill="#222" stroke="#FFF" stroke-width="2"/>
+    <text x="200" y="470" fill="#FFF" font-size="16">Core Services</text>
+    
+    <rect x="120" y="500" width="120" height="50" fill="#007ACC" stroke="#FFF" stroke-width="2"/>
+    <text x="140" y="530" fill="#FFF" font-size="14">Auth Service</text>
+    
+    <rect x="260" y="500" width="120" height="50" fill="#007ACC" stroke="#FFF" stroke-width="2"/>
+    <text x="270" y="530" fill="#FFF" font-size="14">Route Service</text>
+    
+    <!-- UI Components -->
+    <rect x="600" y="450" width="300" height="150" fill="#111" stroke="#FFF" stroke-width="2"/>
+    <text x="720" y="470" fill="#FFF" font-size="16">UI Components</text>
+    
+    <rect x="620" y="500" width="120" height="50" fill="#FF4136" stroke="#FFF" stroke-width="2"/>
+    <text x="640" y="530" fill="#FFF" font-size="14">Route List</text>
+    
+    <rect x="760" y="500" width="120" height="50" fill="#FF4136" stroke="#FFF" stroke-width="2"/>
+    <text x="780" y="530" fill="#FFF" font-size="14">Map View</text>
+    
+    <!-- Connections -->
+    <line x1="500" y1="70" x2="500" y2="100" stroke="#FFF" stroke-width="2"/>
+    <line x1="500" y1="150" x2="500" y2="200" stroke="#FFF" stroke-width="2"/>
+    <line x1="500" y1="400" x2="250" y2="450" stroke="#FFF" stroke-width="2"/>
+    <line x1="500" y1="400" x2="750" y2="450" stroke="#FFF" stroke-width="2"/>
+    
+</svg>
