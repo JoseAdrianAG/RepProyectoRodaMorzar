@@ -1,7 +1,7 @@
 <h1 style="text-align: center;">Rodamorzar</h1>
 <hr>
 
-![alt text](image.png)
+![alt text](./Documentacion/image.png)
 <hr>
 
 # 1 Introduccion 
