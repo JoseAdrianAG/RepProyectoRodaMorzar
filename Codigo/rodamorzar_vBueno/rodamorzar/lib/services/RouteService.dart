@@ -1,4 +1,3 @@
-// lib/services/RouteService.dart
 import 'dart:convert';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -94,6 +93,43 @@ class RouteService {
         throw Exception('Error al actualizar favoritos');
       }
     } catch (e) {
+      throw Exception('Error de conexión: $e');
+    }
+  }
+
+  static Future<Map<String, dynamic>> getRouteDetails(int routeId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
+
+    if (token == null) {
+      throw Exception(
+          'Necesitas iniciar sesión para ver los detalles de la ruta');
+    }
+
+    HttpClient client = HttpClient()
+      ..badCertificateCallback =
+          ((X509Certificate cert, String host, int port) => true);
+
+    try {
+      final request =
+          await client.getUrl(Uri.parse('$baseUrl/routes/$routeId/details'));
+      request.headers.set('Authorization', 'Bearer $token');
+
+      final response = await request.close();
+      final responseBody = await response.transform(utf8.decoder).join();
+
+      if (response.statusCode == 200) {
+        return json.decode(responseBody);
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.clear();
+        throw Exception('Sesión expirada. Por favor, inicia sesión de nuevo');
+      } else {
+        throw Exception(
+            'Error al obtener los detalles de la ruta: ${response.statusCode}');
+      }
+    } catch (e) {
+      if (e is Exception) rethrow;
       throw Exception('Error de conexión: $e');
     }
   }

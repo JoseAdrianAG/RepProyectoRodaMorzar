@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rodamorzar/screens/CreateRouteScreen.dart';
+import 'package:rodamorzar/screens/RouteDetailScreen.dart';
 import 'package:rodamorzar/services/RouteService.dart';
 
 class RoutesScreen extends StatefulWidget {
@@ -136,9 +138,15 @@ class _RoutesScreenState extends State<RoutesScreen> {
                           }
                         },
                       ),
-                      onTap: () {
-                        // TODO: Navegar a la vista detallada de la ruta
-                      },
+                      // onTap: () {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) =>
+                      //           RouteDetailScreen(route: route),
+                      //     ),
+                      //   );
+                      // },
                     ),
                   );
                 },
@@ -146,8 +154,14 @@ class _RoutesScreenState extends State<RoutesScreen> {
             ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {
-          // TODO: Navegar a la pantalla de crear ruta
+        onPressed: () async {
+          final result = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CreateRouteScreen()),
+          );
+          if (result == true) {
+            _loadRoutes(); // Recargar las rutas si se ha creado una nueva
+          }
         },
       ),
     );

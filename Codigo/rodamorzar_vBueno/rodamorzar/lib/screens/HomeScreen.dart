@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:rodamorzar/screens/ProfileScreen.dart';
 import 'package:rodamorzar/screens/RoutesScreen.dart';
+import 'package:rodamorzar/screens/FavoritesScreen.dart';
 import 'package:rodamorzar/services/AuthService.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<dynamic> _searchResults = [];
   bool _isSearching = false;
   int _currentIndex = 0;
+  List<LatLng> _favoriteRoutes = [];
 
   @override
   void initState() {
@@ -169,6 +171,15 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _addRouteToFavorites(LatLng route) {
+    setState(() {
+      _favoriteRoutes.add(route);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Ruta añadida a favoritos')),
+    );
+  }
+
   void _onItemTapped(int index) {
     if (index == _currentIndex) return;
 
@@ -179,12 +190,17 @@ class _HomeScreenState extends State<HomeScreen> {
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const RoutesScreen()),
+          MaterialPageRoute(builder: (context) => RoutesScreen()),
         );
         return; // Retornamos para no actualizar el índice
       case 2:
-        // Implementar navegación a Favoritos
-        break;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const FavoritesScreen(),
+          ),
+        );
+        return; // Retornamos para no actualizar el índice
     }
     setState(() {
       _currentIndex = index;
@@ -234,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             )
                           : null,
-                      hintText: 'Buscar localización...',
+                      hintText: 'Buscar localització...',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
@@ -305,7 +321,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 : const Center(
                     child: Text(
-                        'Se requieren permisos de ubicación para mostrar el mapa'),
+                        "Es requerixen permisos d'ubicació per mostar el mapa"),
                   ),
           ),
         ],
@@ -318,11 +334,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
-            label: 'Rutas',
+            label: 'Rutes',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
-            label: 'Favoritos',
+            label: 'Favorits',
           ),
         ],
         currentIndex: _currentIndex,

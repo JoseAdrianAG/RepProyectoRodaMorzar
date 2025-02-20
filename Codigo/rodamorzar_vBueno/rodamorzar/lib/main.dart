@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rodamorzar/screens/CreateRouteScreen.dart';
 import 'package:rodamorzar/screens/HomeScreen.dart';
 import 'package:rodamorzar/screens/LoginScreen.dart';
 import 'package:rodamorzar/screens/ProfileScreen.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/profile': (context) => ProfileScreen(),
         '/routes': (context) => RoutesScreen(),
+        '/createRoute': (context) => CreateRouteScreen(),
       },
     );
   }

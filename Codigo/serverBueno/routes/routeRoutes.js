@@ -84,4 +84,40 @@ router.post('/:rutaId/favorito', authenticateToken, async (req, res) => {
     }
 });
 
+router.get('/:rutaId/details', authenticateToken, async (req, res) => {
+    const { rutaId } = req.params;
+    
+    try {
+        // Obtener los puntos de la ruta
+        const [points] = await pool.query(
+            'SELECT latitud, longitud, tipo, nombre FROM puntos_ruta WHERE ruta_id = ? ORDER BY orden',
+            [rutaId]
+        );
+
+        // Obtener los bares cercanos a la ruta
+        // Esto es un ejemplo simplificado. En una implementación real,
+        // deberías usar cálculos geoespaciales para encontrar bares realmente cercanos
+        const [bars] = await pool.query(`
+            SELECT b.id, b.nombre, b.direccion, b.latitud, b.longitud, 
+                   b.horario, b.descripcion
+            FROM bares b
+            WHERE ST_Distance_Sphere(
+                POINT(b.longitud, b.latitud),
+                POINT(
+                    (SELECT AVG(longitud) FROM puntos_ruta WHERE ruta_id = ?),
+                    (SELECT AVG(latitud) FROM puntos_ruta WHERE ruta_id = ?)
+                )
+            ) <= 1000  -- buscar bares en un radio de 1km
+        `, [rutaId, rutaId]);
+
+        res.json({
+            points,
+            bars
+        });
+    } catch (error) {
+        console.error('Error al obtener detalles de la ruta:', error);
+        res.status(500).json({ error: 'Error al obtener los detalles de la ruta' });
+    }
+});
+
 export default router;
