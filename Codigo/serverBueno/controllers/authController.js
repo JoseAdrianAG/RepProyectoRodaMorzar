@@ -27,7 +27,12 @@ export const login = async (req, res) => {
     return res.status(401).send({ error: 'Credencials incorrectes' });
   }
 
-  const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
+  // Incluir tanto username como id en el token
+  const token = jwt.sign({ 
+    username: user.username,
+    id: user.id 
+  }, SECRET_KEY, { expiresIn: '1h' });
+  
   res.send({ token });
 };
 

@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import authRouter from './routes/authRoutes.js';
 import locationRouter from './routes/locationRoutes.js';
+import routeRouter from './routes/routeRoutes.js'; 
 
 
 // Carregar els certificats i crea un JSON anomenat credentials
@@ -19,6 +20,8 @@ const app = express();
 app.use(express.json());
 
 app.use('/auth', authRouter);
+app.use('/location', locationRouter);
+app.use('/routes', routeRouter);
 
 // Creem una ruta de prova
 app.get('/', (req, res) => {

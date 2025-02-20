@@ -40,8 +40,11 @@ class _RoutesScreenState extends State<RoutesScreen> {
   List<Map<String, dynamic>> get filteredRoutes {
     if (_filterType == 'todas') return _routes;
     return _routes.where((route) {
-      if (_filterType == 'predefinidas') return route['es_predefinida'] == true;
-      return route['es_predefinida'] == false;
+      // Convert integer to boolean for comparison
+      bool isPredefined =
+          route['es_predefinida'] == 1 || route['es_predefinida'] == true;
+      if (_filterType == 'predefinidas') return isPredefined;
+      return !isPredefined;
     }).toList();
   }
 
@@ -81,12 +84,17 @@ class _RoutesScreenState extends State<RoutesScreen> {
                 itemCount: filteredRoutes.length,
                 itemBuilder: (context, index) {
                   final route = filteredRoutes[index];
+                  // Convert integer to boolean for icon display
+                  bool isPredefined = route['es_predefinida'] == 1 ||
+                      route['es_predefinida'] == true;
+                  bool isFavorite =
+                      route['es_favorita'] == 1 || route['es_favorita'] == true;
+
                   return Card(
                     child: ListTile(
                       leading: Icon(
-                        route['es_predefinida'] ? Icons.verified : Icons.route,
-                        color:
-                            route['es_predefinida'] ? Colors.blue : Colors.grey,
+                        isPredefined ? Icons.verified : Icons.route,
+                        color: isPredefined ? Colors.blue : Colors.grey,
                       ),
                       title: Text(route['nombre']),
                       subtitle: Column(
@@ -107,13 +115,13 @@ class _RoutesScreenState extends State<RoutesScreen> {
                       ),
                       trailing: IconButton(
                         icon: Icon(
-                          route['es_favorita'] ? Icons.star : Icons.star_border,
+                          isFavorite ? Icons.star : Icons.star_border,
                         ),
                         onPressed: () async {
                           try {
                             await RouteService.toggleFavorite(
                               route['id'],
-                              !route['es_favorita'],
+                              !isFavorite,
                             );
                             _loadRoutes(); // Recargar para actualizar el estado
                           } catch (e) {

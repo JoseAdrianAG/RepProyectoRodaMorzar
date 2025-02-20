@@ -10,7 +10,9 @@ class RouteService {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token');
 
-    if (token == null) throw Exception('No hay token');
+    if (token == null) {
+      throw Exception('Necesitas iniciar sesión para ver las rutas');
+    }
 
     HttpClient client = HttpClient()
       ..badCertificateCallback =
@@ -26,10 +28,16 @@ class RouteService {
       if (response.statusCode == 200) {
         final List<dynamic> routes = json.decode(responseBody);
         return routes.cast<Map<String, dynamic>>();
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
+        // Token expirado o inválido
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.clear(); // Limpiar el token
+        throw Exception('Sesión expirada. Por favor, inicia sesión de nuevo');
       } else {
-        throw Exception('Error al obtener las rutas');
+        throw Exception('Error al obtener las rutas: ${response.statusCode}');
       }
     } catch (e) {
+      if (e is Exception) rethrow;
       throw Exception('Error de conexión: $e');
     }
   }

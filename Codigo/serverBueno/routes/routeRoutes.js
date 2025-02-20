@@ -8,6 +8,7 @@ const router = express.Router();
 // Obtener todas las rutas (predefinidas y personales del usuario)
 router.get('/', authenticateToken, async (req, res) => {
     try {
+        const userId = req.user.id; // Ahora podemos acceder al ID del usuario
         const [rows] = await pool.query(
             `SELECT r.*, u.nombre as creador_nombre,
             CASE WHEN rf.ruta_id IS NOT NULL THEN TRUE ELSE FALSE END as es_favorita
@@ -15,10 +16,11 @@ router.get('/', authenticateToken, async (req, res) => {
             LEFT JOIN usuarios u ON r.creador_id = u.id
             LEFT JOIN rutas_favoritas rf ON r.id = rf.ruta_id AND rf.usuario_id = ?
             WHERE r.es_predefinida = TRUE OR r.creador_id = ?`,
-            [req.user.id, req.user.id]
+            [userId, userId]
         );
         res.json(rows);
     } catch (error) {
+        console.error('Error al obtener rutas:', error);
         res.status(500).json({ error: 'Error al obtener las rutas' });
     }
 });
