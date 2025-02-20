@@ -31,21 +31,21 @@ Rodasmorzar es una aplicación que une dos pasiones: el ciclismo y la gastronom�
 
 ## 3.Diagramas de flujo
 ### Server
-![alt server](./Documentacion/server.drawio.png)
+![alt server](./Documentacion/server.drawio.png)  
 ### Aplicacion
-![alt server](./Documentacion/appMvl.png)
+![alt server](./Documentacion/appMvl.png)  
 ### Escritorio
-![alt server](./Documentacion/EscriQT.png)
+![alt server](./Documentacion/EscriQT.png)  
 <hr>
 
 ## 4. ¿Cómo Funciona la Aplicación? 
 - **Demostracion**
-![alt text](./Documentacion/inici.png)
-![alt text](./Documentacion/rutasinsession.png)
-![alt text](./Documentacion/registre.png)
-![alt text](./Documentacion/usuari.png)
-![alt text](./Documentacion/usu.png)
-![alt text](./Documentacion/usu3.png)
+![alt text](./Documentacion/inici.png)  
+![alt text](./Documentacion/rutasinsession.png)  
+![alt text](./Documentacion/registre.png)  
+![alt text](./Documentacion/usuari.png)  
+![alt text](./Documentacion/usu.png)  
+![alt text](./Documentacion/usu3.png)  
 
 
 ## 5.Beneficios para los Usuarios
