@@ -11,7 +11,7 @@ Rodasmorzar es una aplicación que une dos pasiones: el ciclismo y la gastronom�
 
 ## Esquema Rodasmorzar
 
-![alt text](Esquemaroda.png)
+![alt text](./Documentacion/Esquemaroda.png)
 <hr>
 
 ## 2. Funcionalidades Principales
@@ -26,29 +26,29 @@ Rodasmorzar es una aplicación que une dos pasiones: el ciclismo y la gastronom�
 - **Integración con mapas y GPS**:  
   La aplicación utiliza mapas y GPS para guiar a los usuarios en tiempo real, mostrando rutas óptimas y lugares para comer.
 - Diagrama
-![alt text](DiagramaMvl.png)
+![alt text](./Documentacion/DiagramaMvl.png)
 <hr>
 
 ## 3.Diagramas de flujo
 ### Server
-![alt server](server.drawio.png)
+![alt server](./Documentacion/server.drawio.png)
 ### Aplicacion
-![alt server](appMvl.png)
+![alt server](./Documentacion/appMvl.png)
 ### Escritorio
-![alt server](EscriQT.png)
+![alt server](./Documentacion/EscriQT.png)
 <hr>
 
-## 3. ¿Cómo Funciona la Aplicación? 
+## 4. ¿Cómo Funciona la Aplicación? 
 - **Demostracion**
-![alt text](inici.png)
-![alt text](rutasinsession.png)
-![alt text](registre.png)
-![alt text](usuari.png)
-![alt text](usu.png)
-![alt text](usu3.png)
+![alt text](./Documentacion/inici.png)
+![alt text](./Documentacion/rutasinsession.png)
+![alt text](./Documentacion/registre.png)
+![alt text](./Documentacion/usuari.png)
+![alt text](./Documentacion/usu.png)
+![alt text](./Documentacion/usu3.png)
 
 
-## 4.Beneficios para los Usuarios
+## 5.Beneficios para los Usuarios
 
 - **Comodidad**:
     Facilita la búsqueda de lugares y rutas.
@@ -57,7 +57,7 @@ Combina ejercicio y exploración.
 - **Red social**:
  Oportunidades de compartir experiencias.
 
-![alt text](puntuacion.png)
+![alt text](./Documentacion/puntuacion.png)
 
-## 5. ¿Por Qué Elegir Rodasmorzar?
+## 6. ¿Por Qué Elegir Rodasmorzar?
 A diferencia de otras aplicaciones de ciclismo o mapas, Rodasmorzar va un paso más allá, combinando la actividad física con el disfrute gastronómico. No solo te ayuda a planificar rutas, sino que también te permite descubrir los mejores lugares donde comer durante el camino, lo cual hace de cada salida una experiencia única.
